@@ -57,6 +57,10 @@ func YAMLHandler(yml []byte, fallback http.Handler) (http.HandlerFunc, error) {
 	return MapHandler(pathMap, fallback), nil
 }
 
+func JSONHandler() {
+	
+}
+
 func parseYAML(yml []byte) ([]Request, error) {
 	out := []Request{}
 
