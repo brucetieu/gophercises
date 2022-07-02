@@ -31,23 +31,11 @@ func NewHandler(tmpl *template.Template, storyMap map[string]reps.Page) *Handler
 }
 
 func (h *Handler) IndexHandler(w http.ResponseWriter, r *http.Request) {
-	log.Info("path: " + r.URL.Path)
-	
-	switch r.URL.Path {
-	case "/":
-		h.tmpl.Execute(w, h.storyMap[Intro])
-	case "/" + NewYork:
-		h.tmpl.Execute(w, h.storyMap[NewYork])
-	case "/" + Debate:
-		h.tmpl.Execute(w, h.storyMap[Debate])
-	case "/" + SeanKelly:
-		h.tmpl.Execute(w, h.storyMap[SeanKelly])
-	case "/" + MarkBates:
-		h.tmpl.Execute(w, h.storyMap[MarkBates])
-	case "/" + Denver:
-		h.tmpl.Execute(w, h.storyMap[Denver])
-	case "/" + Home:
-		h.tmpl.Execute(w, h.storyMap[Home])
-	}
-	
+	path := r.URL.Path
+	log.Info("path: " + path)
+	if path == "/" || path == "" {
+		path = "/" + Intro
+	} 
+
+	h.tmpl.Execute(w, h.storyMap[path[1:]])
 }
