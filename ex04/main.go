@@ -25,7 +25,7 @@ func readHTML(filename string) string {
 	return string(html)
 }
 
-func prettyFormat(data interface{}) string {
+func PrettyFormat(data interface{}) string {
 	bytes, _ := json.MarshalIndent(data, "", "\t")
 	return string(bytes)
 }
