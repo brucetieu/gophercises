@@ -88,5 +88,5 @@ func main() {
 	htmlString := readHTML(*filePtr)
 	links := HTMLParser(htmlString)
 
-	fmt.Println("links: ", prettyFormat(links))
+	fmt.Println("links: ", PrettyFormat(links))
 }
