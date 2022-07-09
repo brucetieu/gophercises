@@ -55,7 +55,7 @@ func traverseHTML(node *html.Node, links *[]Link) {
 	}
 }
 
-func htmlParser(htmlString string) []Link{
+func HTMLParser(htmlString string) []Link{
 	doc, err := html.Parse(strings.NewReader(htmlString))
 	if err != nil {
 		log.Fatal(err)
@@ -86,7 +86,7 @@ func main() {
 	flag.Parse()
 
 	htmlString := readHTML(*filePtr)
-	links := htmlParser(htmlString)
+	links := HTMLParser(htmlString)
 
 	fmt.Println("links: ", prettyFormat(links))
 }
