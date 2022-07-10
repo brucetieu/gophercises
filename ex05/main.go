@@ -17,7 +17,6 @@ func main() {
 
 	sitemap.URL = strings.TrimSuffix(*urlPtr, "/")
 	sitemap.MaxDepth = *maxDepth
-	
-	fmt.Println(sitemap.BuildSitemap())
 
+	fmt.Println(sitemap.BuildSitemap())
 }

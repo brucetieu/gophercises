@@ -76,6 +76,7 @@ func TraversePage(url string, visited map[string]bool) []string {
 	queue.PushBack(url)
 
 	for queue.Len() > 0 {
+		
 		// Return MaxDepth number of links
 		if len(pages) == MaxDepth {
 			return pages
@@ -113,9 +114,7 @@ func FilteredLinks(htmlPage string) []string {
 			}
 		} else if strings.HasPrefix(link.Href, SlashPrefix) {
 			filteredLinks = append(filteredLinks, URL + link.Href)
-		} else {
-			filteredLinks = append(filteredLinks, URL + "/" + link.Href)
-		}
+		} 
 		
 	}
 
