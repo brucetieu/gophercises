@@ -1,0 +1,4 @@
+github.com/brucetieu/gophercises/ex04 v0.0.0-20220709132735-66b75d4c1a2f h1:Ddihty9e4K5YWylZk7l3Td8pI4iAuXxL4/q0n0iYRYg=
+github.com/brucetieu/gophercises/ex04 v0.0.0-20220709132735-66b75d4c1a2f/go.mod h1:RdvhCV9R8AXuCmwUJemyN8brshN69SH4quXrNvRZkAg=
+golang.org/x/net v0.0.0-20220708220712-1185a9018129 h1:vucSRfWwTsoXro7P+3Cjlr6flUMtzCwzlvkxEQtHHB0=
+golang.org/x/net v0.0.0-20220708220712-1185a9018129/go.mod h1:XRhObCWvk6IyKnWLug+ECip1KBveYUHfp+8e9klMJ9c=
