@@ -3,6 +3,7 @@ package main
 import (
 	"flag"
 	"fmt"
+	"strings"
 
 	"github.com/brucetieu/gophercises/ex05/sitemap"
 )
@@ -14,7 +15,7 @@ func main() {
 
 	flag.Parse()
 
-	sitemap.URL = *urlPtr
+	sitemap.URL = strings.TrimSuffix(*urlPtr, "/")
 	sitemap.MaxDepth = *maxDepth
 	
 	fmt.Println(sitemap.BuildSitemap())
