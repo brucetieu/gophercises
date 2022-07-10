@@ -12,6 +12,7 @@ import (
 
 var (
 	URL string
+	MaxDepth int
 	HTTPPrefix = "https://"
 	SlashPrefix = "/"
 
@@ -44,7 +45,7 @@ func GetHTML(url string) string {
 	return string(html)
 }
 
-func BuildSitemap(url string) string {
+func BuildSitemap() string {
 	
 	sitemapUrlset := &SitemapURLset{}
 	sitemapUrlset.XMLNs = "http://www.sitemaps.org/schemas/sitemap/0.9"
@@ -52,7 +53,7 @@ func BuildSitemap(url string) string {
 
 	visited := make(map[string]bool, 0)
 
-	siteUrls := TraversePage(url, visited)
+	siteUrls := TraversePage(URL, visited)
 	for _, siteUrl := range siteUrls {
 		sitemapUrls = append(sitemapUrls, SitemapURL{siteUrl})
 	}
@@ -74,14 +75,24 @@ func TraversePage(url string, visited map[string]bool) []string {
 
 	queue.PushBack(url)
 
+	currDepth := 0
+
 	for queue.Len() > 0 {
 		e := queue.Front()
 		linkEle := queue.Remove(e)
+
+		currDepth++
+
 		link := linkEle.(string)
 		
 		if _, ok := visited[link]; !ok {
 			visited[link] = true
 			pages = append(pages, link)
+
+			// Return MaxDepth number of links
+			if currDepth == MaxDepth + 1 {
+				return pages
+			}
 
 			htmlPage := GetHTML(link)
 			newLinks := FilteredLinks(htmlPage)
